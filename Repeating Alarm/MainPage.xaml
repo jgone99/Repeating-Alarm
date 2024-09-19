@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+             xmlns:local="clr-namespace:Repeating_Alarm"
+             x:Class="Repeating_Alarm.MainPage"
+             x:DataType="local:MainPageViewModel"
+             HideSoftInputOnTapped="True"
+             BackgroundColor="{DynamicResource Gray600}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Save time"
+            IconImageSource="{mi:Material Icon=Save, IconColor=White}"
+            />
+        <ToolbarItem 
+            Text="Edit time"
+            IconImageSource="{mi:Material Icon=Edit, IconColor=White}"
+            Clicked="EnableEdit"/>
+        <ToolbarItem 
+            Text="Add item"
+            IconImageSource="{mi:Material Icon=Settings, IconColor=White}"
+            Clicked="OpenSettings"/>
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout 
+        Spacing="15" 
+        Padding="20"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <HorizontalStackLayout
+            x:Name="Entries"
+            Spacing="5">
+            <Frame
+                HeightRequest="60"
+                WidthRequest="60"
+                Padding="0"
+                BackgroundColor="{DynamicResource Gray900}"
+                BorderColor="{DynamicResource Gray900}">
+                <Entry 
+                    x:Name="HourEntry"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Text="{Binding Hour, StringFormat='{0:00}'}"
+                    FontSize="30"
+                    Keyboard="Numeric"
+                    MaxLength="2"
+                    Unfocused="ValidateLength"
+                    TextChanged="ValidateIntegerOnly"
+                    TextColor="White"
+                    InputTransparent="True"/>
+            </Frame>
+
+            <Label 
+                Text=":"
+                FontSize="30"
+                VerticalOptions="Center"
+                TextColor="White"/>
+
+            <Frame
+                HeightRequest="60"
+                WidthRequest="60"
+                Padding="0"
+                BackgroundColor="{DynamicResource Gray900}"
+                BorderColor="{DynamicResource Gray900}">
+                <Entry 
+                    x:Name="MinuteEntry"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Text="{Binding Minute, StringFormat='{0:00}'}"
+                    FontSize="30"
+                    Keyboard="Numeric"
+                    MaxLength="2"
+                    Unfocused="ValidateLength"
+                    TextChanged="ValidateIntegerOnly"
+                    TextColor="White"
+                    InputTransparent="True"/>
+            </Frame>
+
+            <Label 
+                Text=":"
+                FontSize="30"
+                VerticalOptions="Center"
+                TextColor="White"/>
+
+            <Frame
+                HeightRequest="60"
+                WidthRequest="60"
+                Padding="0"
+                BackgroundColor="{DynamicResource Gray900}"
+                BorderColor="{DynamicResource Gray900}">
+                <Entry 
+                    x:Name="SecondEntry"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Text="{Binding Second, StringFormat='{0:00}'}"
+                    FontSize="30"
+                    Keyboard="Numeric"
+                    MaxLength="2"
+                    Unfocused="ValidateLength"
+                    TextChanged="ValidateIntegerOnly"
+                    TextColor="White"
+                    InputTransparent="True"/>
+            </Frame>
+        </HorizontalStackLayout>
+
+        <Button
+            x:Name="StartButton"
+            BackgroundColor="{DynamicResource Gray900}"
+            Text="Start"
+            FontSize="30"
+            Clicked="StartTimer"/>
+
+    </VerticalStackLayout>
+
+</ContentPage>
